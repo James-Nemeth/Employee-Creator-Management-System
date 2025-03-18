@@ -15,9 +15,23 @@ const employeeSchema = z.object({
   address: z.string().nonempty("Address is required"),
   startDate: z.string().nonempty("Start date is required"),
   finishDate: z.string().optional(),
-  contract: z.enum(["PERMANENT", "CONTRACT"]),
-  role: z.enum(["FULLTIME", "PARTTIME", "CASUAL"]),
-  hoursPerWeek: z.number().min(1, "Hours per week must be greater than 0"),
+  contract: z
+    .string()
+    .refine((value) => value !== "", { message: "A Contract type is required" })
+    .refine((value) => ["PERMANENT", "CONTRACT"].includes(value), {
+      message: "Invalid contract type",
+    }),
+  role: z
+    .string()
+    .refine((value) => value !== "", { message: "A Role type is required" })
+    .refine((value) => ["FULLTIME", "PARTTIME", "CASUAL"].includes(value), {
+      message: "Invalid role type",
+    }),
+  hoursPerWeek: z
+    .number({
+      invalid_type_error: "Hours per week is required",
+    })
+    .min(1, "Hours per week must be greater than 0"),
 });
 
 type EmployeeFormInputs = z.infer<typeof employeeSchema>;
@@ -106,6 +120,9 @@ const EmployeeForm: React.FC = () => {
       <div className="form-group">
         <label className="form-label">Contract Type</label>
         <select {...register("contract")} className="input-field">
+          <option value="" disabled selected>
+            Select a contract
+          </option>
           <option value="PERMANENT">Permanent</option>
           <option value="CONTRACT">Contract</option>
         </select>
@@ -113,15 +130,20 @@ const EmployeeForm: React.FC = () => {
           <p className="input-error">{errors.contract.message}</p>
         )}
       </div>
+
       <div className="form-group">
         <label className="form-label">Role Type</label>
         <select {...register("role")} className="input-field">
+          <option value="" disabled selected>
+            Select a role
+          </option>
           <option value="FULLTIME">Full-time</option>
           <option value="PARTTIME">Part-time</option>
           <option value="CASUAL">Casual</option>
         </select>
         {errors.role && <p className="input-error">{errors.role.message}</p>}
       </div>
+
       <div className="form-group">
         <label className="form-label">Hours Per Week</label>
         <input

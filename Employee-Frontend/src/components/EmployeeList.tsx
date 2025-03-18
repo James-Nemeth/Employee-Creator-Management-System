@@ -6,10 +6,7 @@ import {
   getEmployees,
   deleteEmployee as deleteEmployeeService,
 } from "../services/employeeService";
-
-const capitalizeFirstLetter = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-};
+import { capitalizeFirstLetter, calculateRemainingYears } from "../utils/utils";
 
 const EmployeeList: React.FC = () => {
   const dispatch = useDispatch();
@@ -56,7 +53,7 @@ const EmployeeList: React.FC = () => {
         </thead>
         <tbody>
           {employees.map((employee) => (
-            <tr key={employee.id} className="hover:bg-gray-100">
+            <tr key={employee.id}>
               <td className="py-2 px-4 border-b text-accent">
                 <div className="flex flex-col">
                   <span className="font-bold text-lg text-black">
@@ -65,6 +62,9 @@ const EmployeeList: React.FC = () => {
                   </span>
                   <span className="text-md text-gray-600">
                     {capitalizeFirstLetter(employee.contract)}
+                    {employee.contract === "CONTRACT" && employee.finishDate
+                      ? ` - ${calculateRemainingYears(employee.finishDate)}yrs`
+                      : ""}
                   </span>
                   <span className="text-md text-gray-600">
                     {employee.email}

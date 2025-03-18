@@ -12,6 +12,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/new-employee" element={<NewEmployee />} />
         </Routes>
+        <footer>&copy; {new Date().getFullYear()} | James Nemeth</footer>
       </Router>
     </Provider>
   );
