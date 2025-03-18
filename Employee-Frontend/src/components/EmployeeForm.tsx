@@ -57,105 +57,123 @@ const EmployeeForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="form-group">
-        <label className="form-label">First Name</label>
-        <input type="text" {...register("firstName")} className="input-field" />
-        {errors.firstName && (
-          <p className="input-error">{errors.firstName.message}</p>
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div className="form-group">
+          <label className="form-label">First Name</label>
+          <input
+            type="text"
+            {...register("firstName")}
+            className="input-field"
+          />
+          {errors.firstName && (
+            <p className="input-error">{errors.firstName.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Middle Name (optional)</label>
+          <input
+            type="text"
+            {...register("middleName")}
+            className="input-field"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Last Name</label>
+          <input
+            type="text"
+            {...register("lastName")}
+            className="input-field"
+          />
+          {errors.lastName && (
+            <p className="input-error">{errors.lastName.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Email</label>
+          <input type="email" {...register("email")} className="input-field" />
+          {errors.email && (
+            <p className="input-error">{errors.email.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Mobile Number</label>
+          <input
+            type="text"
+            {...register("mobileNumber")}
+            className="input-field"
+          />
+          {errors.mobileNumber && (
+            <p className="input-error">{errors.mobileNumber.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Address</label>
+          <input type="text" {...register("address")} className="input-field" />
+          {errors.address && (
+            <p className="input-error">{errors.address.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Start Date</label>
+          <input
+            type="date"
+            {...register("startDate")}
+            className="input-field"
+          />
+          {errors.startDate && (
+            <p className="input-error">{errors.startDate.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Finish Date</label>
+          <input
+            type="date"
+            {...register("finishDate")}
+            className="input-field"
+          />
+        </div>
+        <div className="form-group">
+          <label className="form-label">Contract Type</label>
+          <select
+            {...register("contract")}
+            className="input-field"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Select a contract
+            </option>
+            <option value="PERMANENT">Permanent</option>
+            <option value="CONTRACT">Contract</option>
+          </select>
+          {errors.contract && (
+            <p className="input-error">{errors.contract.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Role Type</label>
+          <select {...register("role")} className="input-field" defaultValue="">
+            <option value="" disabled>
+              Select a role
+            </option>
+            <option value="FULLTIME">Full-time</option>
+            <option value="PARTTIME">Part-time</option>
+            <option value="CASUAL">Casual</option>
+          </select>
+          {errors.role && <p className="input-error">{errors.role.message}</p>}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Hours Per Week</label>
+          <input
+            type="number"
+            {...register("hoursPerWeek", { valueAsNumber: true })}
+            className="input-field"
+          />
+          {errors.hoursPerWeek && (
+            <p className="input-error">{errors.hoursPerWeek.message}</p>
+          )}
+        </div>
       </div>
-      <div className="form-group">
-        <label className="form-label">Middle Name (optional)</label>
-        <input
-          type="text"
-          {...register("middleName")}
-          className="input-field"
-        />
-      </div>
-      <div className="form-group">
-        <label className="form-label">Last Name</label>
-        <input type="text" {...register("lastName")} className="input-field" />
-        {errors.lastName && (
-          <p className="input-error">{errors.lastName.message}</p>
-        )}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Email</label>
-        <input type="email" {...register("email")} className="input-field" />
-        {errors.email && <p className="input-error">{errors.email.message}</p>}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Mobile Number</label>
-        <input
-          type="text"
-          {...register("mobileNumber")}
-          className="input-field"
-        />
-        {errors.mobileNumber && (
-          <p className="input-error">{errors.mobileNumber.message}</p>
-        )}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Address</label>
-        <input type="text" {...register("address")} className="input-field" />
-        {errors.address && (
-          <p className="input-error">{errors.address.message}</p>
-        )}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Start Date</label>
-        <input type="date" {...register("startDate")} className="input-field" />
-        {errors.startDate && (
-          <p className="input-error">{errors.startDate.message}</p>
-        )}
-      </div>
-      <div className="form-group">
-        <label className="form-label">Finish Date</label>
-        <input
-          type="date"
-          {...register("finishDate")}
-          className="input-field"
-        />
-      </div>
-      <div className="form-group">
-        <label className="form-label">Contract Type</label>
-        <select {...register("contract")} className="input-field">
-          <option value="" disabled selected>
-            Select a contract
-          </option>
-          <option value="PERMANENT">Permanent</option>
-          <option value="CONTRACT">Contract</option>
-        </select>
-        {errors.contract && (
-          <p className="input-error">{errors.contract.message}</p>
-        )}
-      </div>
-
-      <div className="form-group">
-        <label className="form-label">Role Type</label>
-        <select {...register("role")} className="input-field">
-          <option value="" disabled selected>
-            Select a role
-          </option>
-          <option value="FULLTIME">Full-time</option>
-          <option value="PARTTIME">Part-time</option>
-          <option value="CASUAL">Casual</option>
-        </select>
-        {errors.role && <p className="input-error">{errors.role.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label className="form-label">Hours Per Week</label>
-        <input
-          type="number"
-          {...register("hoursPerWeek", { valueAsNumber: true })}
-          className="input-field"
-        />
-        {errors.hoursPerWeek && (
-          <p className="input-error">{errors.hoursPerWeek.message}</p>
-        )}
-      </div>
-      <div className="text-center">
+      <div className="text-center mt-4">
         <button
           type="submit"
           className="bg-green-500 hover:bg-green-600 w-32 h-12 text-lg text-white font-bold px-4 py-2 rounded cursor-pointer"

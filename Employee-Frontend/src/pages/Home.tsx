@@ -5,12 +5,12 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container mx-auto p-4 bg-white min-h-screen shadow-md rounded">
-      <h1 className="text-3xl font-bold mb-8 py-10 text-primary text-center underline">
+    <div className="container mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
+      <h1 className="text-3xl font-bold mb-8 pt-10 pb-2 text-primary text-center border-b-2">
         Employee Creator Management System
       </h1>
       <button
-        className="bg-green-500 text-white font-bold px-4 py-2 rounded cursor-pointer hover:bg-green-600 mb-4"
+        className="bg-green-500 text-white font-bold px-4 py-2 rounded cursor-pointer hover:bg-green-600 mb-1 ml-5"
         onClick={() => navigate("/new-employee")}
       >
         + Create New Employee

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import EmployeeForm from "../components/EmployeeForm";
+import EmployeeDetails from "../components/EmployeeDetails";
 
-const NewEmployee: React.FC = () => {
+const Details: React.FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -12,12 +12,9 @@ const NewEmployee: React.FC = () => {
       >
         &larr; Back
       </button>
-      <h1 className="text-3xl font-bold mb-8 pb-2 text-accent text-center border-b-2">
-        Create New Employee
-      </h1>
-      <EmployeeForm />
+      <EmployeeDetails />
     </div>
   );
 };
 
-export default NewEmployee;
+export default Details;

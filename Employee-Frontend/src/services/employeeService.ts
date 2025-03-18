@@ -8,6 +8,11 @@ export const getEmployees = async () => {
   return response.data;
 };
 
+export const getEmployeeById = async (id: number) => {
+  const response = await axios.get<Employee>(`${API_URL}/${id}`);
+  return response.data;
+};
+
 export const createEmployee = async (employee: Employee) => {
   const response = await axios.post<Employee>(API_URL, employee);
   return response.data;

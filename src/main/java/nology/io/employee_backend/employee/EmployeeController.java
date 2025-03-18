@@ -22,6 +22,19 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        try {
+            Employee employee = employeeService.getEmployeeById(id);
+            return ResponseEntity.ok(employee);
+        } catch (IllegalArgumentException e) {
+            Employee errorEmployee = new Employee();
+            errorEmployee.setFirstName("Error");
+            errorEmployee.setLastName(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorEmployee);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody CreateEmployeeDTO employeeDTO) {
         try {

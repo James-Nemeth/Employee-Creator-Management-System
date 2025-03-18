@@ -19,6 +19,15 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public Employee getEmployeeById(Long id) {
+        Optional<Employee> employeeOptional = employeeRepository.findById(id);
+        if (employeeOptional.isPresent()) {
+            return employeeOptional.get();
+        } else {
+            throw new IllegalArgumentException("Employee not found");
+        }
+    }
+
     public Employee createEmployee(CreateEmployeeDTO employeeDTO) {
         validateEmployeeDTO(employeeDTO);
 

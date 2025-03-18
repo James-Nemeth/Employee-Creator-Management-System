@@ -3,6 +3,7 @@ import { store } from "./app/store";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NewEmployee from "./pages/NewEmployee";
+import Details from "./pages/Details";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new-employee" element={<NewEmployee />} />
+          <Route path="/employee/:id" element={<Details />} />
         </Routes>
         <footer>&copy; {new Date().getFullYear()} | James Nemeth</footer>
       </Router>
