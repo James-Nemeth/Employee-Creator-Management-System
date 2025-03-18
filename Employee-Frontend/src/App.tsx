@@ -1,16 +1,18 @@
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import EmployeeList from "./components/EmployeeList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import NewEmployee from "./pages/NewEmployee";
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <div className="container mx-auto p-4 bg-white min-h-screen shadow-md rounded">
-        <h1 className="text-3xl font-bold mb-8 text-primary text-center underline">
-          Employee Creator Management System
-        </h1>
-        <EmployeeList />
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/new-employee" element={<NewEmployee />} />
+        </Routes>
+      </Router>
     </Provider>
   );
 };

@@ -119,7 +119,6 @@ public class CreateEmployeeDTO {
         this.hoursPerWeek = hoursPerWeek;
     }
 
-    // Method to convert DTO to Employee entity
     public Employee toEntity() {
         Employee employee = new Employee();
         employee.setFirstName(this.firstName);

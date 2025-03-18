@@ -72,11 +72,11 @@ const EmployeeList: React.FC = () => {
                 </div>
               </td>
               <td className="py-2 px-4 border-b text-accent text-right">
-                <button className="button-primary text-white font-bold px-4 py-2 rounded cursor-pointer">
+                <button className="button-primary text-white font-bold px-4 py-2 rounded cursor-pointer w-20">
                   Edit
                 </button>
                 <button
-                  className="bg-red-500 text-white font-bold px-4 py-2 rounded ml-2 cursor-pointer hover:bg-red-600"
+                  className="bg-red-500 text-white font-bold px-4 py-2 rounded ml-2 cursor-pointer hover:bg-red-600 w-20"
                   onClick={() => handleDelete(employee.id!)}
                 >
                   Delete
