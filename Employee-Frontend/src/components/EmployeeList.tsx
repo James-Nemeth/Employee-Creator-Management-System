@@ -46,10 +46,10 @@ const EmployeeList: React.FC = () => {
       <table className="min-w-full shadow-lg rounded ">
         <thead>
           <tr>
-            <th className="py-2 px-4 border-b border-accent text-left text-accent font-bold ">
+            <th className="py-2 px-4 border-b border-accent text-left text-accent text-lg font-bold bg-gray-50">
               Employee Details
             </th>
-            <th className="py-2 px-4 border-b border-accent text-right text-accent font-bold">
+            <th className="py-2 px-4 border-b border-accent text-right text-accent text-lg font-bold bg-gray-50">
               Actions
             </th>
           </tr>
@@ -57,9 +57,9 @@ const EmployeeList: React.FC = () => {
         <tbody>
           {employees.map((employee) => (
             <tr key={employee.id} className="hover:bg-gray-100">
-              <td className="py-2 px-4 border-b text-gray-900">
+              <td className="py-2 px-4 border-b text-accent">
                 <div className="flex flex-col">
-                  <span className="font-bold text-lg">
+                  <span className="font-bold text-lg text-black">
                     {employee.firstName} {employee.middleName}{" "}
                     {employee.lastName}
                   </span>
@@ -71,12 +71,12 @@ const EmployeeList: React.FC = () => {
                   </span>
                 </div>
               </td>
-              <td className="py-2 px-4 border-b text-right">
+              <td className="py-2 px-4 border-b text-accent text-right">
                 <button className="button-primary text-white font-bold px-4 py-2 rounded cursor-pointer">
                   Edit
                 </button>
                 <button
-                  className="bg-red-500 text-white font-bold px-4 py-2 rounded ml-2 cursor-pointer hover:bg-red-700"
+                  className="bg-red-500 text-white font-bold px-4 py-2 rounded ml-2 cursor-pointer hover:bg-red-600"
                   onClick={() => handleDelete(employee.id!)}
                 >
                   Delete

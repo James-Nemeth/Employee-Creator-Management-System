@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
 
 :root {
     --color-primary: #25befa;
     --color-secondary: #f0f4f5;
-    --color-accent: #f5cf45;
+    --color-accent: #ffd12d;
     --color-primary-hover: #1aa6e1;  
     --color-accent-hover: #e6bd3d;  
   }
@@ -15,6 +17,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', serif; 
   }
   
   .bg-primary {
