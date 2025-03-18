@@ -145,8 +145,12 @@ public class Employee {
         this.hoursPerWeek = hoursPerWeek;
     }
 
-    public String getId() {
-        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

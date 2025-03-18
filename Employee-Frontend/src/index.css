@@ -1,1 +1,58 @@
 @import "tailwindcss";
+
+:root {
+    --color-primary: #25befa;
+    --color-secondary: #f0f4f5;
+    --color-accent: #f5cf45;
+    --color-primary-hover: #1aa6e1;  
+    --color-accent-hover: #e6bd3d;  
+  }
+  
+  body, #root {
+    background-color: #f8f9fa; 
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  .button-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .button-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+  
+  .button-accent {
+    background-color: var(--color-accent);
+  }
+  
+  .button-accent:hover {
+    background-color: var(--color-accent-hover);
+  }
