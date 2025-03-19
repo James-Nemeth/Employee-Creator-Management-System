@@ -12,3 +12,8 @@ export interface Employee {
   role: string;
   hoursPerWeek: number;
 }
+
+export type EmployeeFormInputs = Omit<Employee, "id"> & {
+  middleName?: string | null;
+  finishDate?: string | null;
+};

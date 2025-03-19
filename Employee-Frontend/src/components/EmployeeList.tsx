@@ -87,7 +87,10 @@ const EmployeeList: React.FC = () => {
                     >
                       Details
                     </button>
-                    <button className="button-primary text-white font-bold px-4 py-2 rounded-md transition-all w-24 cursor-pointer">
+                    <button
+                      className="button-primary text-white font-bold px-4 py-2 rounded-md transition-all w-24 cursor-pointer"
+                      onClick={() => navigate(`/edit-employee/${employee.id}`)}
+                    >
                       Edit
                     </button>
                     <button
