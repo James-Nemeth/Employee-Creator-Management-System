@@ -80,6 +80,9 @@ public class EmployeeService {
         if (employeeDTO.getEmail() == null || employeeDTO.getEmail().isEmpty()) {
             throw new IllegalArgumentException("Email is required");
         }
+        if (employeeDTO.getContract() == ContractType.CONTRACT && employeeDTO.getFinishDate() == null) {
+            throw new IllegalArgumentException("Finish date is required for contract employees");
+        }
     }
 
     private void validateEmployeeDetails(Employee employeeDetails) {
@@ -91,6 +94,9 @@ public class EmployeeService {
         }
         if (employeeDetails.getEmail() == null || employeeDetails.getEmail().isEmpty()) {
             throw new IllegalArgumentException("Email is required");
+        }
+        if (employeeDetails.getContract() == ContractType.CONTRACT && employeeDetails.getFinishDate() == null) {
+            throw new IllegalArgumentException("Finish date is required for contract employees");
         }
     }
 

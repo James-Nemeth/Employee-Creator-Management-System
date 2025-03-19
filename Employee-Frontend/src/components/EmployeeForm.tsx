@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -6,33 +5,45 @@ import { useNavigate } from "react-router-dom";
 import { createEmployee } from "../services/employeeService";
 import { Employee } from "../types/employeeTypes";
 
-const employeeSchema = z.object({
-  firstName: z.string().nonempty("First name is required"),
-  middleName: z.string().optional(),
-  lastName: z.string().nonempty("Last name is required"),
-  email: z.string().email("Invalid email address"),
-  mobileNumber: z.string().nonempty("Mobile number is required"),
-  address: z.string().nonempty("Address is required"),
-  startDate: z.string().nonempty("Start date is required"),
-  finishDate: z.string().optional(),
-  contract: z
-    .string()
-    .refine((value) => value !== "", { message: "A Contract type is required" })
-    .refine((value) => ["PERMANENT", "CONTRACT"].includes(value), {
-      message: "Invalid contract type",
-    }),
-  role: z
-    .string()
-    .refine((value) => value !== "", { message: "A Role type is required" })
-    .refine((value) => ["FULLTIME", "PARTTIME", "CASUAL"].includes(value), {
-      message: "Invalid role type",
-    }),
-  hoursPerWeek: z
-    .number({
-      invalid_type_error: "Hours per week is required",
-    })
-    .min(1, "Hours per week must be greater than 0"),
-});
+const employeeSchema = z
+  .object({
+    firstName: z.string().nonempty("First name is required"),
+    middleName: z.string().optional(),
+    lastName: z.string().nonempty("Last name is required"),
+    email: z.string().email("Invalid email address"),
+    mobileNumber: z.string().nonempty("Mobile number is required"),
+    address: z.string().nonempty("Address is required"),
+    startDate: z.string().nonempty("Start date is required"),
+    finishDate: z.string().optional(),
+    contract: z
+      .string()
+      .refine((value) => value !== "", {
+        message: "A Contract type is required",
+      })
+      .refine((value) => ["PERMANENT", "CONTRACT"].includes(value), {
+        message: "Invalid contract type",
+      }),
+    role: z
+      .string()
+      .refine((value) => value !== "", { message: "A Role type is required" })
+      .refine((value) => ["FULLTIME", "PARTTIME", "CASUAL"].includes(value), {
+        message: "Invalid role type",
+      }),
+    hoursPerWeek: z
+      .number({
+        invalid_type_error: "Hours per week is required",
+      })
+      .min(1, "Hours per week must be greater than 0"),
+  })
+  .superRefine((data, context) => {
+    if (data.contract === "CONTRACT" && !data.finishDate) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Finish date is required for contract employees",
+        path: ["finishDate"],
+      });
+    }
+  });
 
 type EmployeeFormInputs = z.infer<typeof employeeSchema>;
 
@@ -131,6 +142,9 @@ const EmployeeForm: React.FC = () => {
             {...register("finishDate")}
             className="input-field"
           />
+          {errors.finishDate && (
+            <p className="input-error">{errors.finishDate.message}</p>
+          )}
         </div>
         <div className="form-group">
           <label className="form-label">Contract Type</label>

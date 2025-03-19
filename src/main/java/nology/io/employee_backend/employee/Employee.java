@@ -29,7 +29,6 @@ public class Employee {
     @Column(nullable = false)
     private LocalDate startDate;
 
-    @Column(nullable = false)
     private LocalDate finishDate;
 
     @Enumerated(EnumType.STRING)
