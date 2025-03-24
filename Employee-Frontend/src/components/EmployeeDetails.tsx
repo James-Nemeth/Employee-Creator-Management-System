@@ -37,8 +37,8 @@ const EmployeeDetails: React.FC = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-4xl font-bold text-accent text-center mb-6 border-b-4 pb-3">
+    <div className="max-w-4xl mx-auto p-2">
+      <h1 className="text-4xl font-bold text-accent text-center mb-2 border-b-2 pb-1">
         {employee.firstName} {employee.lastName} Details
       </h1>
 

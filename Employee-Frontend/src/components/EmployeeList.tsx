@@ -53,14 +53,14 @@ const EmployeeList: React.FC = () => {
     <div className="container mx-auto my-6 px-4">
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
       <div className="mb-6 flex items-center justify-center sm:justify-start">
-        <label htmlFor="filter" className="mr-2 ml-1">
+        <label htmlFor="filter" className="form-label mr-2 ml-1 text-lg">
           Filter:
         </label>
         <select
           id="filter"
           value={filter}
           onChange={handleFilterChange}
-          className="p-2 border rounded"
+          className="input-field p-2 border border-gray-300 rounded focus:border-accent focus:outline-none"
         >
           <option value="ALL">All Employees</option>
           <option value="FULLTIME">Full-time Employees</option>
@@ -68,6 +68,7 @@ const EmployeeList: React.FC = () => {
           <option value="PREVIOUS">Previous Employees</option>
         </select>
       </div>
+
       <div className="overflow-x-auto">
         <table className="min-w-full shadow-lg rounded-lg border border-gray-300 overflow-hidden">
           <thead className="bg-accent text-white">
