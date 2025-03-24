@@ -13,14 +13,20 @@ const EmployeeList: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const employees = useSelector(
-    (state: RootState) => state.employees.employees
+    (state: RootState) => state.employees.employees || []
   );
   const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>("ALL");
 
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const employees = await getEmployees();
+        let filters = {};
+        if (filter === "FULLTIME") filters = { role: "FULLTIME" };
+        else if (filter === "CONTRACT") filters = { contract: "CONTRACT" };
+        else if (filter === "PREVIOUS") filters = { previous: true };
+
+        const employees = await getEmployees(filters);
         dispatch(setEmployees(employees));
       } catch (error) {
         setError("Failed to fetch employees");
@@ -28,7 +34,7 @@ const EmployeeList: React.FC = () => {
       }
     };
     fetchEmployees();
-  }, [dispatch]);
+  }, [dispatch, filter]);
 
   const handleDelete = async (id: number) => {
     try {
@@ -39,12 +45,32 @@ const EmployeeList: React.FC = () => {
     }
   };
 
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilter(e.target.value);
+  };
+
   return (
-    <div className="container mx-auto my-8 px-4">
+    <div className="container mx-auto my-6 px-4">
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+      <div className="mb-6 flex items-center justify-center sm:justify-start">
+        <label htmlFor="filter" className="mr-2 ml-1">
+          Filter:
+        </label>
+        <select
+          id="filter"
+          value={filter}
+          onChange={handleFilterChange}
+          className="p-2 border rounded"
+        >
+          <option value="ALL">All Employees</option>
+          <option value="FULLTIME">Full-time Employees</option>
+          <option value="CONTRACT">Contract Employees</option>
+          <option value="PREVIOUS">Previous Employees</option>
+        </select>
+      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full shadow-lg rounded-lg border border-gray-300 overflow-hidden">
-          <thead className="bg-accent text-white ">
+          <thead className="bg-accent text-white">
             <tr>
               <th className="py-3 px-5 text-left text-lg font-semibold">
                 Employee Details
@@ -54,7 +80,7 @@ const EmployeeList: React.FC = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 ">
+          <tbody className="divide-y divide-gray-200">
             {employees.map((employee, index) => (
               <tr
                 key={employee.id}

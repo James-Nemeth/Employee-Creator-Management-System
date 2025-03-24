@@ -3,20 +3,32 @@ package nology.io.employee_backend.employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
 public class EmployeeService {
-
     private static final Logger LOGGER = Logger.getLogger(EmployeeService.class.getName());
 
     @Autowired
     private EmployeeRepository employeeRepository;
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findByFinishDateAfterOrFinishDateIsNull(LocalDate.now());
+    }
+
+    public List<Employee> getEmployeesByContract(ContractType contract) {
+        return employeeRepository.findByContractAndFinishDateAfterOrFinishDateIsNull(contract, LocalDate.now());
+    }
+
+    public List<Employee> getEmployeesByRole(RoleType role) {
+        return employeeRepository.findByRole(role);
+    }
+
+    public List<Employee> getPreviousEmployees() {
+        return employeeRepository.findByFinishDateBefore(LocalDate.now());
     }
 
     public Employee getEmployeeById(Long id) {

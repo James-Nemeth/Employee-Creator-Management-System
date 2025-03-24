@@ -9,7 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-
     private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
@@ -17,8 +16,21 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees() {
-        List<Employee> employees = employeeService.getAllEmployees();
+    public ResponseEntity<List<Employee>> getAllEmployees(@RequestParam(required = false) ContractType contract,
+            @RequestParam(required = false) RoleType role,
+            @RequestParam(required = false, defaultValue = "false") boolean previous) {
+        List<Employee> employees;
+
+        if (contract != null) {
+            employees = employeeService.getEmployeesByContract(contract);
+        } else if (role != null) {
+            employees = employeeService.getEmployeesByRole(role);
+        } else if (previous) {
+            employees = employeeService.getPreviousEmployees();
+        } else {
+            employees = employeeService.getAllEmployees();
+        }
+
         return ResponseEntity.ok(employees);
     }
 
