@@ -1,6 +1,6 @@
 <h1 align="center">Employee Creator Management System</h1>
 
-[![React/TS Frontend Tests](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-frontend.yml/badge.svg)](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-frontend.yml)
+[![React/TS Frontend Tests](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-frontend.yml/badge.svg)](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-frontend.yml) <br>
 [![Spring/Java Backend Tests](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-backend.yml/badge.svg)](https://github.com/James-Nemeth/Employee-Creator-Management-System/actions/workflows/ci-backend.yml)
 
 ---
