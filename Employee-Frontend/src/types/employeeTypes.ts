@@ -7,7 +7,7 @@ export interface Employee {
   mobileNumber: string;
   address: string;
   startDate: string;
-  finishDate: string;
+  finishDate: string | null;
   contract: string;
   role: string;
   hoursPerWeek: number;

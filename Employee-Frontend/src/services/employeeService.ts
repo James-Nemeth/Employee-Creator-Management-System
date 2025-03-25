@@ -37,5 +37,5 @@ export const updateEmployee = async (id: number, employee: Employee) => {
 
 export const deleteEmployee = async (id: number) => {
   const response = await axios.delete(`${API_URL}/${id}`);
-  return response.data;
+  return response.data || "";
 };
