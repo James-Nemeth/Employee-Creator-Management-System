@@ -16,7 +16,8 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees(@RequestParam(required = false) ContractType contract,
+    public ResponseEntity<List<Employee>> getAllEmployees(
+            @RequestParam(required = false) ContractType contract,
             @RequestParam(required = false) RoleType role,
             @RequestParam(required = false, defaultValue = "false") boolean previous) {
         List<Employee> employees;
