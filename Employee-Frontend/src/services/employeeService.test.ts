@@ -31,6 +31,7 @@ describe("employeeService", () => {
         contract: "PERMANENT",
         role: "FULLTIME",
         hoursPerWeek: 40,
+        avatarUrl: "http://example.com/john.jpg",
       },
       {
         id: 2,
@@ -44,6 +45,7 @@ describe("employeeService", () => {
         contract: "CONTRACT",
         role: "PARTTIME",
         hoursPerWeek: 20,
+        avatarUrl: "http://example.com/jane.jpg",
       },
     ];
     mock.onGet("http://localhost:8080/employee").reply(200, mockEmployees);
@@ -67,6 +69,7 @@ describe("employeeService", () => {
         contract: "PERMANENT",
         role: "FULLTIME",
         hoursPerWeek: 40,
+        avatarUrl: "http://example.com/john.jpg",
       },
     ];
     mock
@@ -91,6 +94,7 @@ describe("employeeService", () => {
       contract: "PERMANENT",
       role: "FULLTIME",
       hoursPerWeek: 40,
+      avatarUrl: "http://example.com/john.jpg",
     };
     mock.onGet("http://localhost:8080/employee/1").reply(200, mockEmployee);
 
@@ -111,6 +115,7 @@ describe("employeeService", () => {
       contract: "PERMANENT",
       role: "FULLTIME",
       hoursPerWeek: 40,
+      avatarUrl: "http://example.com/alice.jpg",
     };
     const mockEmployee: Employee = { ...newEmployee, id: 3 };
     mock
@@ -135,6 +140,7 @@ describe("employeeService", () => {
       contract: "PERMANENT",
       role: "FULLTIME",
       hoursPerWeek: 40,
+      avatarUrl: "http://example.com/john.jpg",
     };
     mock
       .onPut("http://localhost:8080/employee/1", updatedEmployee)
@@ -146,10 +152,10 @@ describe("employeeService", () => {
   });
 
   it("should delete an employee", async () => {
-    mock.onDelete("http://localhost:8080/employee/1").reply(200);
+    mock.onDelete("http://localhost:8080/employee/1").reply(200, {});
 
     const response = await deleteEmployee(1);
 
-    expect(response).toBe("");
+    expect(response).toEqual({});
   });
 });

@@ -45,6 +45,7 @@ public class EmployeeEndToEndTest {
         emp1.setContract(ContractType.PERMANENT);
         emp1.setRole(RoleType.FULLTIME);
         emp1.setHoursPerWeek(40);
+        emp1.setAvatarUrl("http://example.com/john.jpg"); 
         employees.add(employeeRepository.save(emp1));
 
         Employee emp2 = new Employee();
@@ -58,6 +59,7 @@ public class EmployeeEndToEndTest {
         emp2.setContract(ContractType.CONTRACT);
         emp2.setRole(RoleType.PARTTIME);
         emp2.setHoursPerWeek(20);
+        emp2.setAvatarUrl("http://example.com/jane.jpg");
         employees.add(employeeRepository.save(emp2));
     }
 
@@ -68,7 +70,8 @@ public class EmployeeEndToEndTest {
                 .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("$", hasSize(2))
-                .body("firstName", hasItems("John", "Jane"));
+                .body("firstName", hasItems("John", "Jane"))
+                .body("avatarUrl", hasItems("http://example.com/john.jpg", "http://example.com/jane.jpg")); 
     }
 
     @Test
@@ -79,7 +82,8 @@ public class EmployeeEndToEndTest {
                 .get("/employee/" + id)
                 .then()
                 .statusCode(HttpStatus.OK.value())
-                .body("firstName", equalTo("John"));
+                .body("firstName", equalTo("John"))
+                .body("avatarUrl", equalTo("http://example.com/john.jpg")); 
     }
 
     @Test
@@ -87,7 +91,7 @@ public class EmployeeEndToEndTest {
         CreateEmployeeDTO employeeDTO = new CreateEmployeeDTO(
                 "Alice", "M", "Smith", "alice.smith@example.com", "1112223333",
                 "789 Main St", LocalDate.now(), null, ContractType.PERMANENT,
-                RoleType.FULLTIME, 40);
+                RoleType.FULLTIME, 40, "http://example.com/alice.jpg"); 
 
         given()
                 .contentType("application/json")
@@ -97,7 +101,8 @@ public class EmployeeEndToEndTest {
                 .then()
                 .statusCode(HttpStatus.CREATED.value())
                 .body("firstName", equalTo("Alice"))
-                .body("lastName", equalTo("Smith"));
+                .body("lastName", equalTo("Smith"))
+                .body("avatarUrl", equalTo("http://example.com/alice.jpg")); 
     }
 
     @Test
@@ -113,7 +118,8 @@ public class EmployeeEndToEndTest {
                 .put("/employee/" + id)
                 .then()
                 .statusCode(HttpStatus.OK.value())
-                .body("firstName", equalTo("Johnny"));
+                .body("firstName", equalTo("Johnny"))
+                .body("avatarUrl", equalTo("http://example.com/john.jpg")); 
     }
 
     @Test

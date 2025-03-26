@@ -14,10 +14,11 @@ public class CreateEmployeeDTO {
     private ContractType contract;
     private RoleType role;
     private Integer hoursPerWeek;
+    private String avatarUrl;
 
     public CreateEmployeeDTO(String firstName, String middleName, String lastName, String email, String mobileNumber,
             String address, LocalDate startDate, LocalDate finishDate, ContractType contract, RoleType role,
-            Integer hoursPerWeek) {
+            Integer hoursPerWeek, String avatarUrl) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -29,6 +30,7 @@ public class CreateEmployeeDTO {
         this.contract = contract;
         this.role = role;
         this.hoursPerWeek = hoursPerWeek;
+        this.avatarUrl = avatarUrl;
     }
 
     public String getFirstName() {
@@ -119,6 +121,14 @@ public class CreateEmployeeDTO {
         this.hoursPerWeek = hoursPerWeek;
     }
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     public Employee toEntity() {
         Employee employee = new Employee();
         employee.setFirstName(this.firstName);
@@ -132,6 +142,7 @@ public class CreateEmployeeDTO {
         employee.setContract(this.contract);
         employee.setRole(this.role);
         employee.setHoursPerWeek(this.hoursPerWeek);
+        employee.setAvatarUrl(this.avatarUrl);
         return employee;
     }
 }

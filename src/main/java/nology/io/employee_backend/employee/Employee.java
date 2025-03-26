@@ -42,6 +42,9 @@ public class Employee {
     @Column(nullable = false)
     private Integer hoursPerWeek;
 
+    @Column(nullable = false)
+    private String avatarUrl;
+
     public void update(Employee employeeDetails) {
         this.firstName = employeeDetails.getFirstName();
         this.middleName = employeeDetails.getMiddleName();
@@ -54,6 +57,7 @@ public class Employee {
         this.contract = employeeDetails.getContract();
         this.role = employeeDetails.getRole();
         this.hoursPerWeek = employeeDetails.getHoursPerWeek();
+        this.avatarUrl = employeeDetails.getAvatarUrl();
     }
 
     public String getFirstName() {
@@ -142,6 +146,14 @@ public class Employee {
 
     public void setHoursPerWeek(Integer hoursPerWeek) {
         this.hoursPerWeek = hoursPerWeek;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public Long getId() {

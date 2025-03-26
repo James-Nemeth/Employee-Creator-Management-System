@@ -11,6 +11,7 @@ export interface Employee {
   contract: string;
   role: string;
   hoursPerWeek: number;
+  avatarUrl: string;
 }
 
 export type EmployeeFormInputs = Omit<Employee, "id"> & {

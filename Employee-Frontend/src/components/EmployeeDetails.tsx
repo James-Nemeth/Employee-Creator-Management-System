@@ -38,11 +38,20 @@ const EmployeeDetails: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-2">
-      <h1 className="text-4xl font-bold text-accent text-center mb-2 border-b-2 pb-1">
+      <h1 className="text-4xl font-bold text-accent text-center mb-6 border-b-2 pb-1">
         {employee.firstName} {employee.lastName} Details
       </h1>
 
       <div className="bg-secondary p-8 rounded-lg shadow-lg">
+        <div className="flex justify-center mb-8">
+          {employee.avatarUrl && (
+            <img
+              src={employee.avatarUrl}
+              alt="Employee Avatar"
+              className="rounded-full w-40 h-40 object-cover"
+            />
+          )}
+        </div>
         <div className="space-y-8">
           <section>
             <h2 className="text-2xl font-bold text-accent border-b-2 pb-2 mb-4">
