@@ -4,6 +4,8 @@ import { SubmitHandler } from "react-hook-form";
 import { getEmployeeById, updateEmployee } from "../services/employeeService";
 import { Employee, EmployeeFormInputs } from "../types/employeeTypes";
 import Form from "./common/Form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditForm: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,6 +33,7 @@ const EditForm: React.FC = () => {
             hoursPerWeek: employeeData.hoursPerWeek,
           });
         } catch (error) {
+          toast.error("Failed to fetch employee details.");
           console.error("Failed to fetch employee details", error);
         }
       }
@@ -42,9 +45,11 @@ const EditForm: React.FC = () => {
     try {
       if (id) {
         await updateEmployee(parseInt(id), data as Employee);
+        toast.success("Employee updated successfully!");
         navigate("/");
       }
     } catch (error) {
+      toast.error("Failed to update employee. Please try again.");
       console.error("Failed to update employee", error);
     }
   };

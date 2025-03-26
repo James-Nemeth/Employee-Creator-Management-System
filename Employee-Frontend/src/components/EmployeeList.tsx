@@ -8,6 +8,8 @@ import {
 } from "../services/employeeService";
 import { capitalizeFirstLetter, calculateRemainingYears } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EmployeeList: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ const EmployeeList: React.FC = () => {
         dispatch(setEmployees(employees));
       } catch (error) {
         setError("Failed to fetch employees");
+        toast.error("Failed to fetch employees.");
         console.error(error);
       }
     };
@@ -40,7 +43,9 @@ const EmployeeList: React.FC = () => {
     try {
       await deleteEmployeeService(id);
       dispatch(deleteEmployee(id));
+      toast.success("Employee deleted successfully!");
     } catch (error) {
+      toast.error("Failed to delete employee.");
       console.error("Failed to delete employee", error);
     }
   };

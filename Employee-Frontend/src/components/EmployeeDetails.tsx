@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { getEmployeeById } from "../services/employeeService";
 import { Employee } from "../types/employeeTypes";
 import { capitalizeFirstLetter } from "../utils/utils";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DetailItem: React.FC<{ label: string; value: string }> = ({
   label,
@@ -25,6 +27,7 @@ const EmployeeDetails: React.FC = () => {
           const employeeData = await getEmployeeById(parseInt(id));
           setEmployee(employeeData);
         } catch (error) {
+          toast.error("Failed to fetch employee details.");
           console.error("Failed to fetch employee details", error);
         }
       }
