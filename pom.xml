@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.nology</groupId>
-	<artifactId>to-do-spring-app</artifactId>
+	<artifactId>employee-creator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>to-do-spring-app</name>
+	<name>employee-creator</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

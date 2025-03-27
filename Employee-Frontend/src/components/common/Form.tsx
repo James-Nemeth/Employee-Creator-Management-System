@@ -33,7 +33,7 @@ const employeeSchema = z
         invalid_type_error: "Hours per week is required",
       })
       .min(1, "Hours per week must be greater than 0"),
-    avatarUrl: z.string().url("Invalid URL").nonempty("Avatar URL is required"), // Add avatarUrl validation
+    avatarUrl: z.string().url("Invalid URL").nonempty("Avatar URL is required"),
   })
   .superRefine((data, context) => {
     if (data.contract === "CONTRACT" && !data.finishDate) {

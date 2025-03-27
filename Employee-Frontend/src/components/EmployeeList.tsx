@@ -29,7 +29,10 @@ const EmployeeList: React.FC = () => {
         else if (filter === "PREVIOUS") filters = { previous: true };
 
         const employees = await getEmployees(filters);
-        dispatch(setEmployees(employees));
+        const sortedEmployees = employees.sort(
+          (a, b) => (b.id ?? 0) - (a.id ?? 0)
+        );
+        dispatch(setEmployees(sortedEmployees));
       } catch (error) {
         setError("Failed to fetch employees");
         toast.error("Failed to fetch employees.");
