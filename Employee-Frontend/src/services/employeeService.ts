@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Employee } from "../types/employeeTypes";
 
-const API_URL = "http://localhost:8080/employee";
+const API_URL = "http://3.27.171.213:8080/employee";
 
 export const getEmployees = async (filters?: {
   contract?: string;
