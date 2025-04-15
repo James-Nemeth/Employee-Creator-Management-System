@@ -115,3 +115,17 @@ At least 3 endpoints are required:
 - The app has a slick and professional looking UI, based around the colours Blue, Gold and White.
 
 ---
+
+## Future Goals
+
+- Allow for a Login system that will allow users to change details for their profile.
+- Have a Admin role that can edit and adjust an employee details and status.
+
+---
+
+## What did you struggle with
+
+- Setting up the filter system through the backend instead of the frontend, mostly because l haven't done it before but made be learn some new concepts that l wouldn't have know otherwise.
+- This was my first time using Redux. Has been good to learn and very helpful managing code blocks and state, just took so studying and reading excatly what it does and how l can use it in my project.
+
+---
