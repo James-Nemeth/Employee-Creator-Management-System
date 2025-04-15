@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
                 "http://localhost:5173/",
                 "http://127.0.0.1:5173/",
                 "http://employee-creator-ms.s3-website-ap-southeast-2.amazonaws.com",
-                "http://3.27.171.213:8080",
+                "http://13.236.191.218:8080",
 
         };
         registry.addMapping("/**")
