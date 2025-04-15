@@ -5,6 +5,13 @@
 
 ---
 
+## Screenshots
+
+![App Screenshot](https://github.com/James-Nemeth/Employee-Creator-Management-System/blob/main/EmployeeCreatorSceenShotOne.png)
+![App Screenshot](https://github.com/James-Nemeth/Employee-Creator-Management-System/blob/main/EmployeeCreatorSceenShotTwo.png)
+
+---
+
 ## MVP
 
 When writing your code, please be mindful of the following:
